@@ -1,0 +1,1 @@
+export { ArticleSchema } from './ArticleSchema';

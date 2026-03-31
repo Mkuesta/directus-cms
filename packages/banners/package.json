@@ -1,0 +1,37 @@
+{
+  "name": "@directus-cms/banners",
+  "version": "1.0.0",
+  "description": "Announcement banners, promotions, and popups from Directus for Next.js sites",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "@directus/sdk": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@directus/sdk": "^17.0.1",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

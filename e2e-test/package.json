@@ -1,0 +1,18 @@
+{
+  "name": "e2e-test",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --exclude 'tests/live-*.test.ts'",
+    "test:watch": "vitest --exclude 'tests/live-*.test.ts'",
+    "test:live": "vitest run tests/live-e2e.test.ts --reporter=verbose --test-timeout=600000",
+    "test:features": "vitest run tests/live-features.test.ts --reporter=verbose --test-timeout=30000"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "isomorphic-dompurify": "^2.20.0",
+    "react": "^19.2.4",
+    "typescript": "^5.5.0",
+    "vitest": "^3.0.0"
+  }
+}

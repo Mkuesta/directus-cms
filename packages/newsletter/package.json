@@ -1,0 +1,46 @@
+{
+  "name": "@directus-cms/newsletter",
+  "version": "1.0.0",
+  "description": "Email subscription management and newsletter sign-ups for Directus CMS Next.js sites",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "@directus/sdk": ">=17.0.0",
+    "@directus-cms/email": "*",
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@directus-cms/email": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@directus/sdk": "^17.0.1",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

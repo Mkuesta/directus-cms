@@ -1,0 +1,29 @@
+{
+  "name": "directus-cms-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "sites/*",
+    "e2e-test"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "build:packages": "turbo run build --filter='./packages/*'",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "publish-packages": "turbo run build --filter='./packages/*' && changeset publish"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "@changesets/cli": "^2.27.0",
+    "typescript": "^5.5.0"
+  },
+  "packageManager": "npm@10.0.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

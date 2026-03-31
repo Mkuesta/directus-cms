@@ -1,0 +1,47 @@
+{
+  "name": "@directus-cms/sitemap",
+  "version": "1.0.0",
+  "description": "Sitemap and robots.txt generation for Directus CMS Next.js sites",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "@directus-cms/core": "*",
+    "@directus-cms/products": "*"
+  },
+  "peerDependenciesMeta": {
+    "@directus-cms/core": {
+      "optional": true
+    },
+    "@directus-cms/products": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@directus-cms/core": "*",
+    "@directus-cms/products": "*",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

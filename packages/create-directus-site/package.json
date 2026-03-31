@@ -1,0 +1,24 @@
+{
+  "name": "create-directus-site",
+  "version": "1.0.0",
+  "description": "Scaffold a new Directus CMS-powered Next.js site",
+  "type": "module",
+  "bin": {
+    "create-directus-site": "./dist/index.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./lib": {
+      "import": "./dist/lib.js",
+      "types": "./dist/lib.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  }
+}

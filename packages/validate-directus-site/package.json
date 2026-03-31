@@ -1,0 +1,27 @@
+{
+  "name": "validate-directus-site",
+  "version": "1.0.0",
+  "description": "Validate Directus instance configuration for a CMS-powered Next.js site",
+  "type": "module",
+  "bin": {
+    "validate-directus-site": "./dist/index.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./lib": {
+      "import": "./dist/lib.js",
+      "types": "./dist/lib.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "provision-directus-site": "*"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  }
+}

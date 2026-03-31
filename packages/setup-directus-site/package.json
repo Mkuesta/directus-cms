@@ -1,0 +1,22 @@
+{
+  "name": "setup-directus-site",
+  "version": "1.0.0",
+  "description": "Unified CLI to scaffold, provision, and deploy a Directus CMS-powered Next.js site",
+  "type": "module",
+  "bin": {
+    "setup-directus-site": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "create-directus-site": "*",
+    "provision-directus-site": "*",
+    "deploy-directus-site": "*"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  }
+}

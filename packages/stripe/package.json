@@ -1,0 +1,57 @@
+{
+  "name": "@directus-cms/stripe",
+  "version": "2.0.0",
+  "description": "Stripe payments, checkout sessions, order management, subscriptions, and digital downloads for Directus CMS",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "stripe": ">=14.0.0",
+    "@directus/sdk": ">=17.0.0",
+    "@supabase/supabase-js": ">=2.0.0",
+    "jose": ">=5.0.0",
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@directus/sdk": {
+      "optional": true
+    },
+    "@supabase/supabase-js": {
+      "optional": true
+    },
+    "jose": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "stripe": "^14.0.0",
+    "@directus/sdk": "^17.0.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "jose": "^6.0.11",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

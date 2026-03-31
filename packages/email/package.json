@@ -1,0 +1,52 @@
+{
+  "name": "@directus-cms/email",
+  "version": "1.0.0",
+  "description": "Transactional email via Resend for Directus CMS",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./invoice": {
+      "import": "./dist/invoice.js",
+      "types": "./dist/invoice.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "@directus/sdk": ">=17.0.0",
+    "resend": ">=3.0.0",
+    "@react-pdf/renderer": ">=3.0.0",
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@react-pdf/renderer": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@directus/sdk": "^17.0.1",
+    "@react-pdf/renderer": "^4.3.0",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "resend": "^3.5.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

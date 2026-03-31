@@ -1,0 +1,40 @@
+{
+  "name": "@directus-cms/search",
+  "version": "1.0.0",
+  "description": "Site-wide search with weighted field searching and highlighting for Directus CMS",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "@directus/sdk": ">=17.0.0",
+    "react": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@directus/sdk": "^17.0.1",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
