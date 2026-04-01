@@ -113,43 +113,93 @@ vercel env add NEXT_PUBLIC_BASE_URL production
 
 ---
 
-## Option B: Add packages to an existing site
+## Option B: Add packages to an existing site (without changing layout)
+
+The key principle: **add packages alongside existing code, don't replace anything**.
+Create a new `lib/cms-packages.ts` file — don't modify existing `lib/directus.ts`.
+Migrate one page at a time, or just use packages for new features (scheduling, sitemap).
 
 ### 1. Configure npm registry
 
-Create `.npmrc` in your site root:
+Create `.npmrc` in your site root with the GitHub Packages token:
 ```
 @mkuesta:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=ghp_YOUR_PAT_HERE
 ```
 
-### 2. Install packages you need
+**IMPORTANT:** The token must be hardcoded (not `${NPM_TOKEN}`). Vercel does NOT substitute env vars in `.npmrc` during `npm install`. This is safe as long as your site repo is **private** on GitHub.
+
+Generate a PAT at https://github.com/settings/tokens/new with only `read:packages` scope.
+
+### 2. Install only the packages you need
 
 ```bash
-# Minimum for a blog site
-npm install @mkuesta/core @mkuesta/seo @mkuesta/sitemap
+# Set token locally for install
+export NPM_TOKEN=ghp_YOUR_PAT_HERE
 
-# Add products
-npm install @mkuesta/products
-
-# Add search, forms, email
-npm install @mkuesta/search @mkuesta/forms @mkuesta/email
-
-# Add everything
-npm install @mkuesta/core @mkuesta/products @mkuesta/seo @mkuesta/sitemap \
-  @mkuesta/admin @mkuesta/search @mkuesta/forms @mkuesta/preview \
-  @mkuesta/webhooks @mkuesta/analytics @mkuesta/tags @mkuesta/email \
-  @mkuesta/newsletter @mkuesta/media @mkuesta/navigation @mkuesta/redirects \
-  @mkuesta/banners @mkuesta/notifications
+# Start small — add what you need
+npm install @mkuesta/core @mkuesta/seo @mkuesta/sitemap @mkuesta/preview
 ```
 
-### 3. Create config files
+### 3. Create a SEPARATE config file (don't modify existing code)
 
-Copy from `sites/starter/lib/`:
-- `lib/directus/config.ts` — collection names, routes
-- `lib/cms.ts` — CMS + product clients
-- `lib/seo.ts` — SEO client
-- `lib/sitemap.ts` — sitemap client
-- `lib/preview.ts` — preview/scheduling client
+Create `lib/cms-packages.ts` alongside your existing `lib/directus.ts`:
+
+```typescript
+// lib/cms-packages.ts — @mkuesta package clients
+// Existing lib/directus.ts stays untouched
+import { createDirectus, rest, staticToken } from '@directus/sdk';
+import { createCmsClient } from '@mkuesta/core';
+import { createSeoClient } from '@mkuesta/seo';
+import { createPreviewClient } from '@mkuesta/preview';
+import { DIRECTUS_URL, DIRECTUS_TOKEN, COLLECTIONS } from './directus/config';
+
+const directus = createDirectus(DIRECTUS_URL)
+  .with(staticToken(DIRECTUS_TOKEN))
+  .with(rest());
+
+export const cms = createCmsClient({
+  directus,
+  collections: { ...COLLECTIONS },  // reuse existing config
+  siteName: 'My Site',
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'https://mysite.com',
+  directusUrl: DIRECTUS_URL,
+  route: 'blog',
+});
+
+export const preview = createPreviewClient({
+  directus,
+  directusUrl: DIRECTUS_URL,
+  collections: { posts: COLLECTIONS.posts },
+  previewSecret: process.env.PREVIEW_SECRET || '',
+});
+```
+
+### 4. Add new features without touching existing pages
+
+Packages are great for adding features the site doesn't have yet:
+
+```
+app/api/cron/publish/route.ts  → scheduled publishing (NEW)
+app/api/sitemap/route.ts       → package-powered sitemap (NEW)
+```
+
+Keep existing pages untouched. Only use packages in new routes.
+
+### 5. Gradual migration (optional, per-page)
+
+When you want to improve an existing page's SEO, swap one function at a time:
+
+```typescript
+// Before (custom code)
+import { getPostBySlug } from '@/lib/directus/blog';
+
+// After (package)
+import { cms } from '@/lib/cms-packages';
+const post = await cms.getPostBySlug(slug);
+```
+
+The package returns the same data shape, so components usually work without changes.
 
 ### 4. Add missing Directus fields
 
@@ -260,6 +310,8 @@ FAQ extraction only works with English headings ("Frequently Asked Questions" / 
 
 | Gotcha | What happens | Fix |
 |--------|-------------|-----|
+| `.npmrc` with `${NPM_TOKEN}` on Vercel | Install fails — env var not substituted | Hardcode token in `.npmrc` (keep repo private) |
+| `gho_` token in `.npmrc` | "not a legal HTTP header value" | Must use `ghp_` Personal Access Token |
 | `siteId` on collections without `site` column | Queries return 0 results silently | Don't set `siteId` |
 | `productRoute` doesn't match `app/` path | Sitemap URLs return 404 | Make them match exactly |
 | `DIRECTUS_TOKEN` is read-only | Scheduling can't publish | Use admin write token |
@@ -267,6 +319,7 @@ FAQ extraction only works with English headings ("Frequently Asked Questions" / 
 | Directus Flows `item-update` unreliable | Scheduled content never publishes | Use webhook → API endpoint approach |
 | `og:type=product` via Next.js Metadata | Renders wrong HTML attribute | Use `<ProductOGMeta>` component |
 | `</script>` in CMS content | XSS in JSON-LD | Package escapes it now |
+| Replacing existing site with starter template | Breaks all styling/layout | Use Option B — add packages alongside existing code |
 
 ---
 
