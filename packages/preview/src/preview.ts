@@ -1,4 +1,4 @@
-import { readItems, readItem } from '@directus/sdk';
+import { readItems, readItem, updateItem } from '@directus/sdk';
 import type { PreviewConfig, PreviewItem, ScheduledItem, PublishResult } from './types.js';
 
 /**
@@ -101,7 +101,7 @@ export async function getScheduledContent(
     try {
       const filter: Record<string, any> = {
         _and: [
-          { status: { _eq: 'scheduled' } },
+          { status: { _in: ['draft', 'scheduled'] } },
           { scheduled_publish_date: { _lte: now } },
           { scheduled_publish_date: { _nnull: true } },
         ],
@@ -159,12 +159,10 @@ export async function publishScheduledContent(
 
     try {
       await config.directus.request(
-        // Use raw request since updateItem requires schema typing
-        {
-          method: 'PATCH',
-          path: `/items/${collection}/${item.id}`,
-          body: { status: 'published' },
-        } as any,
+        updateItem(collection as any, item.id, {
+          status: 'published',
+          published_date: item.scheduledPublishDate || new Date().toISOString(),
+        } as any),
       );
       published++;
     } catch (err) {

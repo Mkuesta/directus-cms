@@ -1,0 +1,27 @@
+# Environment variables
+.env
+.env.local
+
+# Node modules
+node_modules/
+
+# Uploads
+uploads/
+
+# Extensions
+extensions/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Database files
+*.sqlite
+*.db
+
+# Docker volumes
+.docker/
+
+# OS files
+.DS_Store
+Thumbs.db

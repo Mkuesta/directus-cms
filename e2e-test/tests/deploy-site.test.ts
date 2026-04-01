@@ -108,7 +108,7 @@ describe('readEnvLocal', () => {
 // hasDirectusCmsDep()
 // ---------------------------------------------------------------------------
 describe('hasDirectusCmsDep', () => {
-  it('returns true for project with @directus-cms/core', () => {
+  it('returns true for project with @mkuesta/core', () => {
     const pkgJson = generatePackageJson(createCoreOnlySiteOptions());
     fs.writeFileSync(path.join(tmpDir, 'package.json'), pkgJson);
     expect(hasDirectusCmsDep(tmpDir)).toBe(true);

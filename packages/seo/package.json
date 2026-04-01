@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/seo",
+  "name": "@mkuesta/seo",
   "version": "1.0.0",
   "description": "SEO utilities, structured data generation, and meta tag helpers for Directus CMS sites",
   "type": "module",
@@ -31,10 +31,16 @@
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/seo"
+  }
 }

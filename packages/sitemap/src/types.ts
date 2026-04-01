@@ -1,5 +1,5 @@
-import type { CmsClient } from '@directus-cms/core';
-import type { ProductClient } from '@directus-cms/products';
+import type { CmsClient } from '@mkuesta/core';
+import type { ProductClient } from '@mkuesta/products';
 
 export type ChangeFrequency =
   | 'always'
@@ -41,9 +41,9 @@ export interface ContentTypeDefaults {
 export interface SitemapConfig {
   /** Canonical site URL, no trailing slash (e.g. "https://example.com") */
   baseUrl: string;
-  /** CmsClient from @directus-cms/core (optional) */
+  /** CmsClient from @mkuesta/core (optional) */
   cms?: CmsClient;
-  /** ProductClient from @directus-cms/products (optional) */
+  /** ProductClient from @mkuesta/products (optional) */
   products?: ProductClient;
   /** Static pages to include */
   staticPages?: StaticPageEntry[];
@@ -87,6 +87,8 @@ export interface SitemapClient {
   generateSitemap(): Promise<SitemapEntry[]>;
   /** Generate entries in Next.js MetadataRoute.Sitemap format (Date objects, ready to export) */
   generateNextSitemap(): Promise<NextSitemapEntry[]>;
+  /** Generate complete sitemap XML string — use for serving from API routes with obfuscated URLs */
+  generateSitemapXml(): Promise<string>;
   /** Generate a specific segment of sitemap entries (for sitemap index) */
   generateSitemapSegment(id: number): Promise<SitemapEntry[]>;
   /** Generate sitemap index IDs (for Next.js generateSitemaps()) */

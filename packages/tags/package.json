@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/tags",
+  "name": "@mkuesta/tags",
   "version": "1.0.0",
   "description": "Tag taxonomy and content discovery for Directus CMS",
   "type": "module",
@@ -31,10 +31,16 @@
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/tags"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/forms",
+  "name": "@mkuesta/forms",
   "version": "1.0.0",
   "description": "Form submissions and lead capture for Directus CMS Next.js sites",
   "type": "module",
@@ -28,10 +28,16 @@
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/forms"
+  }
 }

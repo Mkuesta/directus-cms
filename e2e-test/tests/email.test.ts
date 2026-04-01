@@ -13,7 +13,7 @@ import {
   createDirectusEmailTemplate,
 } from '../../directus-cms-testing/src/index.js';
 
-describe('@directus-cms/email', () => {
+describe('@mkuesta/email', () => {
   describe('provisioning schema', () => {
     it('includeEmail adds email_templates and email_log collections', () => {
       const features = { ...createCoreOnlyFeatures(), includeEmail: true };
@@ -56,7 +56,7 @@ describe('@directus-cms/email', () => {
       const opts = createCoreOnlySiteOptions({ includeEmail: true });
       const output = generateEmailConfig(opts);
       expect(output.length).toBeGreaterThan(0);
-      expect(output).toContain('@directus-cms/email');
+      expect(output).toContain('@mkuesta/email');
       expect(output).toContain('createEmailClient');
     });
 
@@ -71,9 +71,9 @@ describe('@directus-cms/email', () => {
       expect(env).toContain('EMAIL_FROM=');
     });
 
-    it('generatePackageJson with email adds @directus-cms/email', () => {
+    it('generatePackageJson with email adds @mkuesta/email', () => {
       const json = JSON.parse(generatePackageJson(createCoreOnlySiteOptions({ includeEmail: true })));
-      expect(json.dependencies).toHaveProperty('@directus-cms/email');
+      expect(json.dependencies).toHaveProperty('@mkuesta/email');
     });
   });
 

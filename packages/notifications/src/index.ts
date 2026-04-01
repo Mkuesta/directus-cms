@@ -5,7 +5,7 @@ import { getTemplates, getTemplate } from './templates';
  * Creates a notification client for CMS-managed notification templates.
  *
  * The client is optional — you can use `<NotificationProvider>` and `useNotification()`
- * from `@directus-cms/notifications/components` without it for purely client-side
+ * from `@mkuesta/notifications/components` without it for purely client-side
  * toast notifications.
  *
  * Usage:

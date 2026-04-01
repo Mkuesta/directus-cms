@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/sitemap",
+  "name": "@mkuesta/sitemap",
   "version": "1.0.0",
   "description": "Sitemap and robots.txt generation for Directus CMS Next.js sites",
   "type": "module",
@@ -20,28 +20,34 @@
     "dev": "tsup --watch"
   },
   "peerDependencies": {
-    "@directus-cms/core": "*",
-    "@directus-cms/products": "*"
+    "@mkuesta/core": "*",
+    "@mkuesta/products": "*"
   },
   "peerDependenciesMeta": {
-    "@directus-cms/core": {
+    "@mkuesta/core": {
       "optional": true
     },
-    "@directus-cms/products": {
+    "@mkuesta/products": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@directus-cms/core": "*",
-    "@directus-cms/products": "*",
+    "@mkuesta/core": "*",
+    "@mkuesta/products": "*",
     "tsup": "^8.0.0",
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/sitemap"
+  }
 }

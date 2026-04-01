@@ -7,7 +7,7 @@ export interface NewsletterCollections {
   subscribers: string;
 }
 
-// ── EmailClient interface (optional dep on @directus-cms/email) ─────────────
+// ── EmailClient interface (optional dep on @mkuesta/email) ─────────────
 
 export interface EmailClientLike {
   sendEmail(options: {

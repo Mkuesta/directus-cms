@@ -13,7 +13,7 @@ import {
   createDirectusUserProfile,
 } from '../../directus-cms-testing/src/index.js';
 
-describe('@directus-cms/auth', () => {
+describe('@mkuesta/auth', () => {
   describe('provisioning schema', () => {
     it('includeAuth adds user_profiles collection', () => {
       const features = { ...createCoreOnlyFeatures(), includeAuth: true };
@@ -42,7 +42,7 @@ describe('@directus-cms/auth', () => {
       const opts = createCoreOnlySiteOptions({ includeAuth: true });
       const output = generateAuthConfig(opts);
       expect(output.length).toBeGreaterThan(0);
-      expect(output).toContain('@directus-cms/auth');
+      expect(output).toContain('@mkuesta/auth');
       expect(output).toContain('createAuthClient');
     });
 
@@ -58,9 +58,9 @@ describe('@directus-cms/auth', () => {
       expect(env).toContain('SUPABASE_SERVICE_ROLE_KEY=');
     });
 
-    it('generatePackageJson with auth adds @directus-cms/auth', () => {
+    it('generatePackageJson with auth adds @mkuesta/auth', () => {
       const json = JSON.parse(generatePackageJson(createCoreOnlySiteOptions({ includeAuth: true })));
-      expect(json.dependencies).toHaveProperty('@directus-cms/auth');
+      expect(json.dependencies).toHaveProperty('@mkuesta/auth');
     });
   });
 

@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/products",
+  "name": "@mkuesta/products",
   "version": "1.0.0",
   "description": "Shared Directus CMS product infrastructure for Next.js sites",
   "type": "module",
@@ -21,13 +21,13 @@
   },
   "peerDependencies": {
     "@directus/sdk": ">=17.0.0",
-    "@directus-cms/core": "*",
+    "@mkuesta/core": "*",
     "next": ">=14.0.0",
     "react": ">=18.0.0"
   },
   "devDependencies": {
     "@directus/sdk": "^17.0.1",
-    "@directus-cms/core": "*",
+    "@mkuesta/core": "*",
     "@types/react": "^18.2.0",
     "next": "^15.0.0",
     "react": "^18.2.0",
@@ -35,10 +35,16 @@
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/products"
+  }
 }

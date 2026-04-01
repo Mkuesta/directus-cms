@@ -11,7 +11,7 @@ import { createApiHandler } from './api-handler';
  *     collections: { subscribers: `${PREFIX}_subscribers` },
  *     doubleOptIn: true,
  *     confirmationUrl: 'https://example.com/api/newsletter',
- *     emailClient: email, // optional, from @directus-cms/email
+ *     emailClient: email, // optional, from @mkuesta/email
  *   });
  *   await newsletter.subscribe({ email: 'user@example.com', source: 'homepage' });
  */

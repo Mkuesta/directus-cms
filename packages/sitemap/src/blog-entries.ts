@@ -1,5 +1,5 @@
 import type { SitemapConfig, SitemapEntry } from './types';
-import { resolvePostPath, resolveCategoryPath, resolveIndexPath } from '@directus-cms/core';
+import { resolvePostPath, resolveCategoryPath, resolveIndexPath } from '@mkuesta/core';
 
 export async function getBlogEntries(config: SitemapConfig): Promise<SitemapEntry[]> {
   if (!config.cms) return [];

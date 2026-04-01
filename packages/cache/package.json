@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/cache",
+  "name": "@mkuesta/cache",
   "version": "1.0.0",
   "description": "Shared caching utilities for Directus CMS packages",
   "type": "module",
@@ -20,10 +20,16 @@
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/cache"
+  }
 }

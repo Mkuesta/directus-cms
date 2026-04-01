@@ -36,7 +36,7 @@ const ORDER_FIELDS = [
 
 function requireDirectus(config: StripeConfig) {
   if (!config.directus || !config.collections) {
-    throw new Error('@directus-cms/stripe: directus client and collections are required for order operations');
+    throw new Error('@mkuesta/stripe: directus client and collections are required for order operations');
   }
   return { directus: config.directus, collections: config.collections };
 }

@@ -5,6 +5,7 @@ import { getStaticEntries } from './static-entries';
 import { generateSitemap, generateSitemapSegment, generateSitemapIndex } from './sitemap';
 import { generateRobots } from './robots';
 import { generateNextSitemap } from './nextjs';
+import { generateSitemapXml } from './xml';
 
 /**
  * Creates a sitemap client with all helpers pre-bound to the given config.
@@ -19,6 +20,7 @@ export function createSitemapClient(config: SitemapConfig): SitemapClient {
     generateNextSitemap: () => generateNextSitemap(config),
     generateSitemapSegment: (id) => generateSitemapSegment(config, id),
     generateSitemapIndex: () => generateSitemapIndex(config),
+    generateSitemapXml: () => generateSitemapXml(config),
     generateRobots: () => generateRobots(config),
     getBlogEntries: () => getBlogEntries(config),
     getProductEntries: () => getProductEntries(config),
@@ -47,3 +49,4 @@ export { generateSitemap, generateSitemapSegment, generateSitemapIndex } from '.
 export { generateRobots } from './robots';
 export { applyI18nAlternates, applyI18nToEntries } from './i18n';
 export { generateNextSitemap } from './nextjs';
+export { generateSitemapXml, entriesToXml } from './xml';

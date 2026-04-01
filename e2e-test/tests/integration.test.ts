@@ -82,18 +82,18 @@ describe('full pipeline integration', () => {
 
     // Features that have both a package dep and provisioned collections
     const featureMapping: [string, string, string[]][] = [
-      ['includeProducts', '@directus-cms/products', ['_categories', '_products']],
-      ['includeNavigation', '@directus-cms/navigation', ['_navigation_items']],
-      ['includePages', '@directus-cms/pages', ['_pages']],
-      ['includeForms', '@directus-cms/forms', ['_form_submissions']],
-      ['includeAnalytics', '@directus-cms/analytics', ['_analytics_settings']],
-      ['includeRedirects', '@directus-cms/redirects', ['_redirects']],
-      ['includeMedia', '@directus-cms/media', ['_galleries', '_gallery_items']],
-      ['includeBanners', '@directus-cms/banners', ['_banners']],
-      ['includeI18n', '@directus-cms/i18n', ['_translations']],
-      ['includeStripe', '@directus-cms/stripe', ['_orders']],
-      ['includeAuth', '@directus-cms/auth', ['_user_profiles']],
-      ['includeEmail', '@directus-cms/email', ['_email_templates', '_email_log']],
+      ['includeProducts', '@mkuesta/products', ['_categories', '_products']],
+      ['includeNavigation', '@mkuesta/navigation', ['_navigation_items']],
+      ['includePages', '@mkuesta/pages', ['_pages']],
+      ['includeForms', '@mkuesta/forms', ['_form_submissions']],
+      ['includeAnalytics', '@mkuesta/analytics', ['_analytics_settings']],
+      ['includeRedirects', '@mkuesta/redirects', ['_redirects']],
+      ['includeMedia', '@mkuesta/media', ['_galleries', '_gallery_items']],
+      ['includeBanners', '@mkuesta/banners', ['_banners']],
+      ['includeI18n', '@mkuesta/i18n', ['_translations']],
+      ['includeStripe', '@mkuesta/stripe', ['_orders']],
+      ['includeAuth', '@mkuesta/auth', ['_user_profiles']],
+      ['includeEmail', '@mkuesta/email', ['_email_templates', '_email_log']],
     ];
 
     for (const [_flag, depName, collectionSuffixes] of featureMapping) {

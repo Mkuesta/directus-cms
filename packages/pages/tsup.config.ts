@@ -6,5 +6,5 @@ export default defineConfig({
   dts: true,
   splitting: true,
   clean: true,
-  external: ['@directus/sdk', '@directus-cms/core'],
+  external: ['@directus/sdk', '@mkuesta/core'],
 });

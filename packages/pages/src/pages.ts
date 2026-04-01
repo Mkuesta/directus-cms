@@ -1,5 +1,5 @@
 import { readItems } from '@directus/sdk';
-import { processArticleContent } from '@directus-cms/core';
+import { processArticleContent } from '@mkuesta/core';
 import type { PageConfig, DirectusPage, Page } from './types';
 
 function getAssetUrl(config: PageConfig, fileId: string | undefined | null): string | undefined {

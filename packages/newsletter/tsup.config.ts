@@ -7,7 +7,7 @@ export default defineConfig([
     dts: true,
     splitting: true,
     clean: true,
-    external: ['@directus/sdk', '@directus-cms/email'],
+    external: ['@directus/sdk', '@mkuesta/email'],
   },
   {
     entry: ['src/components/index.ts'],

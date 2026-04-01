@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/webhooks",
+  "name": "@mkuesta/webhooks",
   "version": "1.0.0",
   "description": "Webhook receiver for Directus events with cache invalidation and Next.js ISR revalidation",
   "type": "module",
@@ -24,10 +24,16 @@
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/webhooks"
+  }
 }

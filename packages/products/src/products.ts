@@ -1,5 +1,5 @@
 import { readItems } from '@directus/sdk';
-import { extractFAQsFromContent, extractTablesFromContent, extractItemListsFromContent, remapFields, remapItem, remapFilter, remapSort } from '@directus-cms/core';
+import { extractFAQsFromContent, extractTablesFromContent, extractItemListsFromContent, remapFields, remapItem, remapFilter, remapSort } from '@mkuesta/core';
 import type { ProductConfig, DirectusProductFull, Product, ProductCategory, ProductFilterOptions, ProductsResult, ProductSortOption } from './types';
 import { processProductSeoContent } from './product-content';
 

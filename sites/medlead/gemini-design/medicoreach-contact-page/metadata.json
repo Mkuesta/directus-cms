@@ -1,0 +1,5 @@
+{
+  "name": "MedicoReach Contact Page",
+  "description": "A responsive healthcare contact page featuring a form, map integration, and dark mode support, built with React and Tailwind CSS.",
+  "requestFramePermissions": []
+}

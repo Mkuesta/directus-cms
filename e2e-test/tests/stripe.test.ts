@@ -14,7 +14,7 @@ import {
   createDirectusOrder,
 } from '../../directus-cms-testing/src/index.js';
 
-describe('@directus-cms/stripe', () => {
+describe('@mkuesta/stripe', () => {
   describe('provisioning schema', () => {
     it('includeStripe adds orders collection', () => {
       const features = { ...createCoreOnlyFeatures(), includeStripe: true };
@@ -46,7 +46,7 @@ describe('@directus-cms/stripe', () => {
       const opts = createCoreOnlySiteOptions({ includeStripe: true, includeProducts: true });
       const output = generateStripeConfig(opts);
       expect(output.length).toBeGreaterThan(0);
-      expect(output).toContain('@directus-cms/stripe');
+      expect(output).toContain('@mkuesta/stripe');
       expect(output).toContain('createStripeClient');
     });
 
@@ -67,9 +67,9 @@ describe('@directus-cms/stripe', () => {
       expect(env).toContain('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=');
     });
 
-    it('generatePackageJson with stripe adds @directus-cms/stripe', () => {
+    it('generatePackageJson with stripe adds @mkuesta/stripe', () => {
       const json = JSON.parse(generatePackageJson(createCoreOnlySiteOptions({ includeStripe: true })));
-      expect(json.dependencies).toHaveProperty('@directus-cms/stripe');
+      expect(json.dependencies).toHaveProperty('@mkuesta/stripe');
     });
   });
 

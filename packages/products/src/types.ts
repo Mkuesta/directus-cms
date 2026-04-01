@@ -1,5 +1,5 @@
 import type { RestClient } from '@directus/sdk';
-import type { DirectusFile, CollectionFieldMappings } from '@directus-cms/core';
+import type { DirectusFile, CollectionFieldMappings } from '@mkuesta/core';
 
 // ── ProductConfig: passed to createProductClient() ──────────────────────────
 

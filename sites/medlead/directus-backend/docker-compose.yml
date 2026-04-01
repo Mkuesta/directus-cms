@@ -1,0 +1,74 @@
+services:
+  directus:
+    image: directus/directus:latest
+    network_mode: "bridge"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      # Map transaction pooler to IPv4 address to avoid IPv6 issues
+      - "aws-0-eu-central-1.pooler.supabase.com:18.198.145.223"
+    ports:
+      - "8055:8055"
+    volumes:
+      # Uploads directory (optional - we'll use Supabase Storage)
+      - ./uploads:/directus/uploads
+      # Extensions directory
+      - ./extensions:/directus/extensions
+    env_file:
+      - .env
+    # Cloudflare DNS with IPv4 preference
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    dns_search: []
+    environment:
+      # Force IPv4
+      NODE_OPTIONS: '--dns-result-order=ipv4first'
+      # Database - Supabase PostgreSQL
+      DB_CLIENT: 'pg'
+      DB_HOST: '${DB_HOST}'
+      DB_PORT: '${DB_PORT}'
+      DB_DATABASE: '${DB_DATABASE}'
+      DB_USER: '${DB_USER}'
+      DB_PASSWORD: '${DB_PASSWORD}'
+      DB_SSL: '${DB_SSL}'
+      DB_SSL__REJECT_UNAUTHORIZED: 'false'
+      DB_SEARCH_PATH: 'directus'
+
+      # Directus Configuration
+      KEY: '${KEY}'
+      SECRET: '${SECRET}'
+
+      # Admin User
+      ADMIN_EMAIL: '${ADMIN_EMAIL}'
+      ADMIN_PASSWORD: '${ADMIN_PASSWORD}'
+
+      # Server
+      PUBLIC_URL: '${PUBLIC_URL}'
+      PORT: '8055'
+      LOG_LEVEL: 'info'
+
+      # CORS
+      CORS_ENABLED: 'true'
+      CORS_ORIGIN: '${CORS_ORIGIN}'
+
+      # Storage (Supabase S3)
+      STORAGE_LOCATIONS: 'supabase'
+      STORAGE_SUPABASE_DRIVER: 's3'
+      STORAGE_SUPABASE_KEY: '${STORAGE_SUPABASE_KEY}'
+      STORAGE_SUPABASE_SECRET: '${STORAGE_SUPABASE_SECRET}'
+      STORAGE_SUPABASE_BUCKET: '${STORAGE_SUPABASE_BUCKET}'
+      STORAGE_SUPABASE_REGION: 'auto'
+      STORAGE_SUPABASE_ENDPOINT: '${STORAGE_SUPABASE_ENDPOINT}'
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8055/server/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  directus_uploads:
+  directus_extensions:

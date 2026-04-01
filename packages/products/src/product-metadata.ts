@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ProductConfig, Product } from './types';
 import { getProductBySlug } from './products';
 import { getProductCategoryBySlug } from './categories';
-import { getSettings as getCoreSettings, type SiteSettings } from '@directus-cms/core';
+import { getSettings as getCoreSettings, type SiteSettings } from '@mkuesta/core';
 
 /**
  * Fetches settings singleton using the core getSettings, adapted for ProductConfig.

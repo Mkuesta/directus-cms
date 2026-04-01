@@ -17,7 +17,7 @@ let _tablesEnsured = false;
  */
 export function getSupabaseClient(config: StripeConfig): SupabaseClient {
   if (!config.supabaseUrl || !config.supabaseServiceRoleKey) {
-    throw new Error('@directus-cms/stripe: supabaseUrl and supabaseServiceRoleKey are required for Supabase features');
+    throw new Error('@mkuesta/stripe: supabaseUrl and supabaseServiceRoleKey are required for Supabase features');
   }
 
   const cached = _clientCache.get(config.supabaseUrl);
@@ -49,7 +49,7 @@ export async function ensureTables(config: StripeConfig): Promise<void> {
       const { error: createError } = await supabase.rpc('exec_sql', { sql });
       if (createError) {
         // Fallback: try via raw REST if rpc not available
-        console.warn(`@directus-cms/stripe: Could not auto-create table "${table}": ${createError.message}. Create tables manually.`);
+        console.warn(`@mkuesta/stripe: Could not auto-create table "${table}": ${createError.message}. Create tables manually.`);
       }
     }
   }
@@ -62,7 +62,7 @@ export async function ensureTables(config: StripeConfig): Promise<void> {
  */
 export async function getSiteId(config: StripeConfig): Promise<string> {
   const slug = config.siteSlug;
-  if (!slug) throw new Error('@directus-cms/stripe: siteSlug is required for Supabase features');
+  if (!slug) throw new Error('@mkuesta/stripe: siteSlug is required for Supabase features');
 
   // Check cache
   const cached = _siteIdCache.get(slug);
@@ -93,7 +93,7 @@ export async function getSiteId(config: StripeConfig): Promise<string> {
     .single();
 
   if (error || !created) {
-    throw new Error(`@directus-cms/stripe: Failed to create site "${slug}": ${error?.message}`);
+    throw new Error(`@mkuesta/stripe: Failed to create site "${slug}": ${error?.message}`);
   }
 
   _siteIdCache.set(slug, { id: created.id, ts: Date.now() });

@@ -19,7 +19,7 @@ export function detectRequiredEnvVars(dir: string): EnvVar[] {
   );
 
   // Admin package
-  if (deps['@directus-cms/admin']) {
+  if (deps['@mkuesta/admin']) {
     envVars.push(
       { key: 'ADMIN_PASSWORD', value: '', required: true },
       { key: 'ADMIN_SECRET', value: '', required: true },
@@ -27,7 +27,7 @@ export function detectRequiredEnvVars(dir: string): EnvVar[] {
   }
 
   // Preview package
-  if (deps['@directus-cms/preview']) {
+  if (deps['@mkuesta/preview']) {
     envVars.push(
       { key: 'PREVIEW_SECRET', value: '', required: true },
       { key: 'DIRECTUS_ADMIN_TOKEN', value: '', required: true },
@@ -35,14 +35,14 @@ export function detectRequiredEnvVars(dir: string): EnvVar[] {
   }
 
   // Webhooks package
-  if (deps['@directus-cms/webhooks']) {
+  if (deps['@mkuesta/webhooks']) {
     envVars.push(
       { key: 'WEBHOOK_SECRET', value: '', required: true },
     );
   }
 
   // Stripe package
-  if (deps['@directus-cms/stripe']) {
+  if (deps['@mkuesta/stripe']) {
     envVars.push(
       { key: 'STRIPE_SECRET_KEY', value: '', required: true },
       { key: 'STRIPE_WEBHOOK_SECRET', value: '', required: true },
@@ -51,7 +51,7 @@ export function detectRequiredEnvVars(dir: string): EnvVar[] {
   }
 
   // Auth package
-  if (deps['@directus-cms/auth']) {
+  if (deps['@mkuesta/auth']) {
     envVars.push(
       { key: 'NEXT_PUBLIC_SUPABASE_URL', value: '', required: true },
       { key: 'NEXT_PUBLIC_SUPABASE_ANON_KEY', value: '', required: true },
@@ -60,7 +60,7 @@ export function detectRequiredEnvVars(dir: string): EnvVar[] {
   }
 
   // Email package
-  if (deps['@directus-cms/email']) {
+  if (deps['@mkuesta/email']) {
     envVars.push(
       { key: 'RESEND_API_KEY', value: '', required: true },
       { key: 'EMAIL_FROM', value: '', required: true },
@@ -100,5 +100,5 @@ export function hasDirectusCmsDep(dir: string): boolean {
 
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
   const deps = { ...pkg.dependencies, ...pkg.devDependencies };
-  return !!deps['@directus-cms/core'];
+  return !!deps['@mkuesta/core'];
 }

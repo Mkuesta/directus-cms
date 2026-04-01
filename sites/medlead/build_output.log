@@ -1,0 +1,27 @@
+
+> wordpress-vorlage@0.1.0 build
+> next build
+
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'turbopackUseSystemTlsCerts' at "experimental"
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+   ▲ Next.js 15.2.3
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+ ⨯ ESLint: Cannot find module 'c:\Users\chris\Github-webapps\wordpress-Vorlagen.de\node_modules\eslint-config-next\core-web-vitals' imported from c:\Users\chris\Github-webapps\wordpress-Vorlagen.de\eslint.config.mjs Did you mean to import "eslint-config-next/core-web-vitals.js"?
+Failed to compile.
+
+./app/(storefront)/products/[slug]/page.tsx:46:48
+Type error: Property 'image' does not exist on type 'StrapiImage'.
+
+[0m [90m 44 |[39m   [36mconst[39m title [33m=[39m product[33m.[39mseo[33m?[39m[33m.[39mtitle [33m||[39m [32m`${product.title} | Template Marketplace`[39m[33m;[39m[0m
+[0m [90m 45 |[39m   [36mconst[39m description [33m=[39m product[33m.[39mseo[33m?[39m[33m.[39mdescription [33m||[39m product[33m.[39mshortDescription [33m||[39m product[33m.[39mtitle[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 46 |[39m   [36mconst[39m imageUrl [33m=[39m product[33m.[39mpreviewImages[33m?[39m[33m.[39m[[35m0[39m][33m?[39m[33m.[39mimage[33m?[39m[33m.[39murl [33m||[39m [32m"/og-image.png"[39m[33m;[39m[0m
+[0m [90m    |[39m                                                [31m[1m^[22m[39m[0m
+[0m [90m 47 |[39m[0m
+[0m [90m 48 |[39m   [36mreturn[39m {[0m
+[0m [90m 49 |[39m     title[33m,[39m[0m
+Next.js build worker exited with code: 1 and signal: null

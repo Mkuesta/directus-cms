@@ -56,44 +56,44 @@ afterEach(() => {
 // generatePackageJson
 // ---------------------------------------------------------------------------
 describe('generatePackageJson', () => {
-  it('core-only config includes only @directus-cms/core dep', () => {
+  it('core-only config includes only @mkuesta/core dep', () => {
     const json = JSON.parse(generatePackageJson(createCoreOnlySiteOptions()));
     const depNames = Object.keys(json.dependencies);
-    const cmsDeps = depNames.filter((d: string) => d.startsWith('@directus-cms/'));
-    expect(cmsDeps).toEqual(['@directus-cms/core']);
+    const cmsDeps = depNames.filter((d: string) => d.startsWith('@mkuesta/'));
+    expect(cmsDeps).toEqual(['@mkuesta/core']);
   });
 
-  it('full config includes all 20 @directus-cms/* dependencies', () => {
+  it('full config includes all 20 @mkuesta/* dependencies', () => {
     const json = JSON.parse(generatePackageJson(createFullSiteOptions()));
-    const cmsDeps = Object.keys(json.dependencies).filter((d: string) => d.startsWith('@directus-cms/'));
+    const cmsDeps = Object.keys(json.dependencies).filter((d: string) => d.startsWith('@mkuesta/'));
     expect(cmsDeps).toHaveLength(20);
-    expect(cmsDeps).toContain('@directus-cms/core');
-    expect(cmsDeps).toContain('@directus-cms/products');
-    expect(cmsDeps).toContain('@directus-cms/admin');
-    expect(cmsDeps).toContain('@directus-cms/sitemap');
-    expect(cmsDeps).toContain('@directus-cms/navigation');
-    expect(cmsDeps).toContain('@directus-cms/pages');
-    expect(cmsDeps).toContain('@directus-cms/forms');
-    expect(cmsDeps).toContain('@directus-cms/analytics');
-    expect(cmsDeps).toContain('@directus-cms/redirects');
-    expect(cmsDeps).toContain('@directus-cms/media');
-    expect(cmsDeps).toContain('@directus-cms/banners');
-    expect(cmsDeps).toContain('@directus-cms/i18n');
-    expect(cmsDeps).toContain('@directus-cms/seo');
-    expect(cmsDeps).toContain('@directus-cms/search');
-    expect(cmsDeps).toContain('@directus-cms/tags');
-    expect(cmsDeps).toContain('@directus-cms/preview');
-    expect(cmsDeps).toContain('@directus-cms/webhooks');
-    expect(cmsDeps).toContain('@directus-cms/stripe');
-    expect(cmsDeps).toContain('@directus-cms/auth');
-    expect(cmsDeps).toContain('@directus-cms/email');
+    expect(cmsDeps).toContain('@mkuesta/core');
+    expect(cmsDeps).toContain('@mkuesta/products');
+    expect(cmsDeps).toContain('@mkuesta/admin');
+    expect(cmsDeps).toContain('@mkuesta/sitemap');
+    expect(cmsDeps).toContain('@mkuesta/navigation');
+    expect(cmsDeps).toContain('@mkuesta/pages');
+    expect(cmsDeps).toContain('@mkuesta/forms');
+    expect(cmsDeps).toContain('@mkuesta/analytics');
+    expect(cmsDeps).toContain('@mkuesta/redirects');
+    expect(cmsDeps).toContain('@mkuesta/media');
+    expect(cmsDeps).toContain('@mkuesta/banners');
+    expect(cmsDeps).toContain('@mkuesta/i18n');
+    expect(cmsDeps).toContain('@mkuesta/seo');
+    expect(cmsDeps).toContain('@mkuesta/search');
+    expect(cmsDeps).toContain('@mkuesta/tags');
+    expect(cmsDeps).toContain('@mkuesta/preview');
+    expect(cmsDeps).toContain('@mkuesta/webhooks');
+    expect(cmsDeps).toContain('@mkuesta/stripe');
+    expect(cmsDeps).toContain('@mkuesta/auth');
+    expect(cmsDeps).toContain('@mkuesta/email');
   });
 
   it('all @directus-cms deps use file:../../directus-cms-* paths', () => {
     const json = JSON.parse(generatePackageJson(createFullSiteOptions()));
     const deps = json.dependencies;
     for (const [name, value] of Object.entries(deps)) {
-      if (name.startsWith('@directus-cms/')) {
+      if (name.startsWith('@mkuesta/')) {
         expect(value).toMatch(/^file:\.\.\/\.\.\/directus-cms-/);
       }
     }
@@ -118,25 +118,25 @@ describe('generatePackageJson', () => {
   });
 
   it.each([
-    ['includeProducts', '@directus-cms/products'],
-    ['includeAdmin', '@directus-cms/admin'],
-    ['includeSitemap', '@directus-cms/sitemap'],
-    ['includeNavigation', '@directus-cms/navigation'],
-    ['includePages', '@directus-cms/pages'],
-    ['includeForms', '@directus-cms/forms'],
-    ['includeAnalytics', '@directus-cms/analytics'],
-    ['includeRedirects', '@directus-cms/redirects'],
-    ['includeMedia', '@directus-cms/media'],
-    ['includeBanners', '@directus-cms/banners'],
-    ['includeI18n', '@directus-cms/i18n'],
-    ['includeSeo', '@directus-cms/seo'],
-    ['includeSearch', '@directus-cms/search'],
-    ['includeTags', '@directus-cms/tags'],
-    ['includePreview', '@directus-cms/preview'],
-    ['includeWebhooks', '@directus-cms/webhooks'],
-    ['includeStripe', '@directus-cms/stripe'],
-    ['includeAuth', '@directus-cms/auth'],
-    ['includeEmail', '@directus-cms/email'],
+    ['includeProducts', '@mkuesta/products'],
+    ['includeAdmin', '@mkuesta/admin'],
+    ['includeSitemap', '@mkuesta/sitemap'],
+    ['includeNavigation', '@mkuesta/navigation'],
+    ['includePages', '@mkuesta/pages'],
+    ['includeForms', '@mkuesta/forms'],
+    ['includeAnalytics', '@mkuesta/analytics'],
+    ['includeRedirects', '@mkuesta/redirects'],
+    ['includeMedia', '@mkuesta/media'],
+    ['includeBanners', '@mkuesta/banners'],
+    ['includeI18n', '@mkuesta/i18n'],
+    ['includeSeo', '@mkuesta/seo'],
+    ['includeSearch', '@mkuesta/search'],
+    ['includeTags', '@mkuesta/tags'],
+    ['includePreview', '@mkuesta/preview'],
+    ['includeWebhooks', '@mkuesta/webhooks'],
+    ['includeStripe', '@mkuesta/stripe'],
+    ['includeAuth', '@mkuesta/auth'],
+    ['includeEmail', '@mkuesta/email'],
   ] as const)('%s adds exactly %s', (flag, expectedDep) => {
     const baseOpts = createCoreOnlySiteOptions();
     const baseDeps = Object.keys(JSON.parse(generatePackageJson(baseOpts)).dependencies);
@@ -193,25 +193,25 @@ describe('generateEnvLocal', () => {
 // ---------------------------------------------------------------------------
 describe('config generators', () => {
   it.each([
-    ['generateCmsConfig', generateCmsConfig, '@directus-cms/core'],
-    ['generateProductsConfig', generateProductsConfig, '@directus-cms/products'],
-    ['generateSitemapConfig', generateSitemapConfig, '@directus-cms/sitemap'],
-    ['generateNavigationConfig', generateNavigationConfig, '@directus-cms/navigation'],
-    ['generatePagesConfig', generatePagesConfig, '@directus-cms/pages'],
-    ['generateFormsConfig', generateFormsConfig, '@directus-cms/forms'],
-    ['generateAnalyticsConfig', generateAnalyticsConfig, '@directus-cms/analytics'],
-    ['generateRedirectsConfig', generateRedirectsConfig, '@directus-cms/redirects'],
-    ['generateMediaConfig', generateMediaConfig, '@directus-cms/media'],
-    ['generateBannersConfig', generateBannersConfig, '@directus-cms/banners'],
-    ['generateI18nConfig', generateI18nConfig, '@directus-cms/i18n'],
-    ['generateSeoConfig', generateSeoConfig, '@directus-cms/seo'],
-    ['generateSearchConfig', generateSearchConfig, '@directus-cms/search'],
-    ['generateTagsConfig', generateTagsConfig, '@directus-cms/tags'],
-    ['generatePreviewConfig', generatePreviewConfig, '@directus-cms/preview'],
-    ['generateWebhooksConfig', generateWebhooksConfig, '@directus-cms/webhooks'],
-    ['generateStripeConfig', generateStripeConfig, '@directus-cms/stripe'],
-    ['generateAuthConfig', generateAuthConfig, '@directus-cms/auth'],
-    ['generateEmailConfig', generateEmailConfig, '@directus-cms/email'],
+    ['generateCmsConfig', generateCmsConfig, '@mkuesta/core'],
+    ['generateProductsConfig', generateProductsConfig, '@mkuesta/products'],
+    ['generateSitemapConfig', generateSitemapConfig, '@mkuesta/sitemap'],
+    ['generateNavigationConfig', generateNavigationConfig, '@mkuesta/navigation'],
+    ['generatePagesConfig', generatePagesConfig, '@mkuesta/pages'],
+    ['generateFormsConfig', generateFormsConfig, '@mkuesta/forms'],
+    ['generateAnalyticsConfig', generateAnalyticsConfig, '@mkuesta/analytics'],
+    ['generateRedirectsConfig', generateRedirectsConfig, '@mkuesta/redirects'],
+    ['generateMediaConfig', generateMediaConfig, '@mkuesta/media'],
+    ['generateBannersConfig', generateBannersConfig, '@mkuesta/banners'],
+    ['generateI18nConfig', generateI18nConfig, '@mkuesta/i18n'],
+    ['generateSeoConfig', generateSeoConfig, '@mkuesta/seo'],
+    ['generateSearchConfig', generateSearchConfig, '@mkuesta/search'],
+    ['generateTagsConfig', generateTagsConfig, '@mkuesta/tags'],
+    ['generatePreviewConfig', generatePreviewConfig, '@mkuesta/preview'],
+    ['generateWebhooksConfig', generateWebhooksConfig, '@mkuesta/webhooks'],
+    ['generateStripeConfig', generateStripeConfig, '@mkuesta/stripe'],
+    ['generateAuthConfig', generateAuthConfig, '@mkuesta/auth'],
+    ['generateEmailConfig', generateEmailConfig, '@mkuesta/email'],
   ] as const)('%s produces non-empty output containing %s import', (_name, generator, expectedImport) => {
     const opts = createFullSiteOptions();
     const output = generator(opts);

@@ -11,7 +11,7 @@ export async function syncProductToStripe(
   productId: number,
 ): Promise<{ stripeProductId: string; stripePriceId: string }> {
   if (!config.directus || !config.collections) {
-    throw new Error('@directus-cms/stripe: directus client and collections are required for syncProductToStripe');
+    throw new Error('@mkuesta/stripe: directus client and collections are required for syncProductToStripe');
   }
 
   const directus = config.directus;

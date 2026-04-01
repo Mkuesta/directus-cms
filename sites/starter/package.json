@@ -1,0 +1,42 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@directus/sdk": "^20.3.0",
+    "@mkuesta/core": "*",
+    "@mkuesta/products": "*",
+    "@mkuesta/seo": "*",
+    "@mkuesta/sitemap": "*",
+    "@mkuesta/admin": "*",
+    "@mkuesta/search": "*",
+    "@mkuesta/forms": "*",
+    "@mkuesta/preview": "*",
+    "@mkuesta/webhooks": "*",
+    "@mkuesta/analytics": "*",
+    "@mkuesta/navigation": "*",
+    "@mkuesta/tags": "*",
+    "@mkuesta/email": "*",
+    "@mkuesta/newsletter": "*",
+    "@mkuesta/redirects": "*",
+    "@mkuesta/banners": "*",
+    "@mkuesta/media": "*",
+    "@mkuesta/notifications": "*",
+    "next": "^15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.5.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0"
+  }
+}

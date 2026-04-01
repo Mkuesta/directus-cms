@@ -1,4 +1,4 @@
-import { markdownToHtml, addIdsToHeadings, extractHeadings, sanitizeHtml, wrapFaqSection } from '@directus-cms/core';
+import { markdownToHtml, addIdsToHeadings, extractHeadings, sanitizeHtml, wrapFaqSection } from '@mkuesta/core';
 
 /**
  * Processes a product's seo_article markdown field into sanitized HTML.

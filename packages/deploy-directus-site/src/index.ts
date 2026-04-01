@@ -91,7 +91,7 @@ async function main() {
   }
 
   if (!hasDirectusCmsDep(dir)) {
-    console.error('Error: This directory does not contain a @directus-cms/core dependency.');
+    console.error('Error: This directory does not contain a @mkuesta/core dependency.');
     console.error('Run create-directus-site first to scaffold a project.');
     process.exit(1);
   }

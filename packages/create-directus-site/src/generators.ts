@@ -6,30 +6,30 @@ export function generatePackageJson(opts: SiteOptions): string {
     'react': '^18.2.0',
     'react-dom': '^18.2.0',
     '@directus/sdk': '^17.0.1',
-    '@directus-cms/core': 'file:../../directus-cms-core',
+    '@mkuesta/core': 'file:../../directus-cms-core',
   };
 
-  if (opts.includeProducts) deps['@directus-cms/products'] = 'file:../../directus-cms-products';
-  if (opts.includeAdmin) deps['@directus-cms/admin'] = 'file:../../directus-cms-admin';
-  if (opts.includeSitemap) deps['@directus-cms/sitemap'] = 'file:../../directus-cms-sitemap';
-  if (opts.includeNavigation) deps['@directus-cms/navigation'] = 'file:../../directus-cms-navigation';
-  if (opts.includePages) deps['@directus-cms/pages'] = 'file:../../directus-cms-pages';
-  if (opts.includeForms) deps['@directus-cms/forms'] = 'file:../../directus-cms-forms';
-  if (opts.includeAnalytics) deps['@directus-cms/analytics'] = 'file:../../directus-cms-analytics';
-  if (opts.includeRedirects) deps['@directus-cms/redirects'] = 'file:../../directus-cms-redirects';
-  if (opts.includeMedia) deps['@directus-cms/media'] = 'file:../../directus-cms-media';
-  if (opts.includeBanners) deps['@directus-cms/banners'] = 'file:../../directus-cms-banners';
-  if (opts.includeI18n) deps['@directus-cms/i18n'] = 'file:../../directus-cms-i18n';
-  if (opts.includeSeo) deps['@directus-cms/seo'] = 'file:../../directus-cms-seo';
-  if (opts.includeSearch) deps['@directus-cms/search'] = 'file:../../directus-cms-search';
-  if (opts.includeTags) deps['@directus-cms/tags'] = 'file:../../directus-cms-tags';
-  if (opts.includePreview) deps['@directus-cms/preview'] = 'file:../../directus-cms-preview';
-  if (opts.includeWebhooks) deps['@directus-cms/webhooks'] = 'file:../../directus-cms-webhooks';
-  if (opts.includeStripe) deps['@directus-cms/stripe'] = 'file:../../directus-cms-stripe';
-  if (opts.includeAuth) deps['@directus-cms/auth'] = 'file:../../directus-cms-auth';
-  if (opts.includeEmail) deps['@directus-cms/email'] = 'file:../../directus-cms-email';
-  if (opts.includeNewsletter) deps['@directus-cms/newsletter'] = 'file:../../directus-cms-newsletter';
-  if (opts.includeNotifications) deps['@directus-cms/notifications'] = 'file:../../directus-cms-notifications';
+  if (opts.includeProducts) deps['@mkuesta/products'] = 'file:../../directus-cms-products';
+  if (opts.includeAdmin) deps['@mkuesta/admin'] = 'file:../../directus-cms-admin';
+  if (opts.includeSitemap) deps['@mkuesta/sitemap'] = 'file:../../directus-cms-sitemap';
+  if (opts.includeNavigation) deps['@mkuesta/navigation'] = 'file:../../directus-cms-navigation';
+  if (opts.includePages) deps['@mkuesta/pages'] = 'file:../../directus-cms-pages';
+  if (opts.includeForms) deps['@mkuesta/forms'] = 'file:../../directus-cms-forms';
+  if (opts.includeAnalytics) deps['@mkuesta/analytics'] = 'file:../../directus-cms-analytics';
+  if (opts.includeRedirects) deps['@mkuesta/redirects'] = 'file:../../directus-cms-redirects';
+  if (opts.includeMedia) deps['@mkuesta/media'] = 'file:../../directus-cms-media';
+  if (opts.includeBanners) deps['@mkuesta/banners'] = 'file:../../directus-cms-banners';
+  if (opts.includeI18n) deps['@mkuesta/i18n'] = 'file:../../directus-cms-i18n';
+  if (opts.includeSeo) deps['@mkuesta/seo'] = 'file:../../directus-cms-seo';
+  if (opts.includeSearch) deps['@mkuesta/search'] = 'file:../../directus-cms-search';
+  if (opts.includeTags) deps['@mkuesta/tags'] = 'file:../../directus-cms-tags';
+  if (opts.includePreview) deps['@mkuesta/preview'] = 'file:../../directus-cms-preview';
+  if (opts.includeWebhooks) deps['@mkuesta/webhooks'] = 'file:../../directus-cms-webhooks';
+  if (opts.includeStripe) deps['@mkuesta/stripe'] = 'file:../../directus-cms-stripe';
+  if (opts.includeAuth) deps['@mkuesta/auth'] = 'file:../../directus-cms-auth';
+  if (opts.includeEmail) deps['@mkuesta/email'] = 'file:../../directus-cms-email';
+  if (opts.includeNewsletter) deps['@mkuesta/newsletter'] = 'file:../../directus-cms-newsletter';
+  if (opts.includeNotifications) deps['@mkuesta/notifications'] = 'file:../../directus-cms-notifications';
 
   return JSON.stringify({
     name: opts.siteSlug,
@@ -96,7 +96,7 @@ export function generateEnvLocal(opts: SiteOptions): string {
 
 export function generateCmsConfig(opts: SiteOptions): string {
   return `import { createDirectus, rest, staticToken } from '@directus/sdk';
-import { createCmsClient } from '@directus-cms/core';
+import { createCmsClient } from '@mkuesta/core';
 
 const COLLECTION_PREFIX = '${opts.collectionPrefix.replace(/'/g, "\\'")}';
 
@@ -125,7 +125,7 @@ export { directus, COLLECTION_PREFIX };
 }
 
 export function generateProductsConfig(opts: SiteOptions): string {
-  return `import { createProductClient } from '@directus-cms/products';
+  return `import { createProductClient } from '@mkuesta/products';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const products = createProductClient({
@@ -148,7 +148,7 @@ export const products = createProductClient({
 }
 
 export function generateSitemapConfig(opts: SiteOptions): string {
-  const imports = ["import { createSitemapClient } from '@directus-cms/sitemap';", "import { cms } from './cms';"];
+  const imports = ["import { createSitemapClient } from '@mkuesta/sitemap';", "import { cms } from './cms';"];
   const configLines = [`  baseUrl: '${opts.baseUrl}',`, '  cms,'];
 
   if (opts.includeProducts) {
@@ -171,7 +171,7 @@ ${configLines.join('\n')}
 }
 
 export function generateNavigationConfig(opts: SiteOptions): string {
-  return `import { createNavigationClient } from '@directus-cms/navigation';
+  return `import { createNavigationClient } from '@mkuesta/navigation';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const nav = createNavigationClient({
@@ -185,7 +185,7 @@ export const nav = createNavigationClient({
 }
 
 export function generatePagesConfig(opts: SiteOptions): string {
-  return `import { createPageClient } from '@directus-cms/pages';
+  return `import { createPageClient } from '@mkuesta/pages';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const pages = createPageClient({
@@ -201,7 +201,7 @@ export const pages = createPageClient({
 }
 
 export function generateFormsConfig(opts: SiteOptions): string {
-  return `import { createFormClient } from '@directus-cms/forms';
+  return `import { createFormClient } from '@mkuesta/forms';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const forms = createFormClient({
@@ -215,7 +215,7 @@ export const forms = createFormClient({
 }
 
 export function generateAnalyticsConfig(opts: SiteOptions): string {
-  return `import { createAnalyticsClient } from '@directus-cms/analytics';
+  return `import { createAnalyticsClient } from '@mkuesta/analytics';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const analytics = createAnalyticsClient({
@@ -229,7 +229,7 @@ export const analytics = createAnalyticsClient({
 }
 
 export function generateRedirectsConfig(opts: SiteOptions): string {
-  return `import { createRedirectClient } from '@directus-cms/redirects';
+  return `import { createRedirectClient } from '@mkuesta/redirects';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const redirects = createRedirectClient({
@@ -243,7 +243,7 @@ export const redirects = createRedirectClient({
 }
 
 export function generateMediaConfig(opts: SiteOptions): string {
-  return `import { createMediaClient } from '@directus-cms/media';
+  return `import { createMediaClient } from '@mkuesta/media';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const media = createMediaClient({
@@ -258,7 +258,7 @@ export const media = createMediaClient({
 }
 
 export function generateBannersConfig(opts: SiteOptions): string {
-  return `import { createBannerClient } from '@directus-cms/banners';
+  return `import { createBannerClient } from '@mkuesta/banners';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const banners = createBannerClient({
@@ -272,7 +272,7 @@ export const banners = createBannerClient({
 }
 
 export function generateI18nConfig(opts: SiteOptions): string {
-  return `import { createI18nClient } from '@directus-cms/i18n';
+  return `import { createI18nClient } from '@mkuesta/i18n';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const i18n = createI18nClient({
@@ -335,7 +335,7 @@ export const POST = handler;
 }
 
 export function generateSeoConfig(opts: SiteOptions): string {
-  return `import { createSeoClient } from '@directus-cms/seo';
+  return `import { createSeoClient } from '@mkuesta/seo';
 
 export const seo = createSeoClient({
   baseUrl: '${opts.baseUrl}',
@@ -346,7 +346,7 @@ export const seo = createSeoClient({
 }
 
 export function generateSearchConfig(opts: SiteOptions): string {
-  return `import { createSearchClient } from '@directus-cms/search';
+  return `import { createSearchClient } from '@mkuesta/search';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const search = createSearchClient({
@@ -386,7 +386,7 @@ export async function GET(request: Request) {
 }
 
 export function generateTagsConfig(opts: SiteOptions): string {
-  return `import { createTagClient } from '@directus-cms/tags';
+  return `import { createTagClient } from '@mkuesta/tags';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const tags = createTagClient({
@@ -401,7 +401,7 @@ export const tags = createTagClient({
 
 export function generatePreviewConfig(opts: SiteOptions): string {
   return `import { createDirectus, rest, staticToken } from '@directus/sdk';
-import { createPreviewClient } from '@directus-cms/preview';
+import { createPreviewClient } from '@mkuesta/preview';
 
 const COLLECTION_PREFIX = '${opts.collectionPrefix.replace(/'/g, "\\'")}';
 
@@ -423,7 +423,7 @@ export const preview = createPreviewClient({
 }
 
 export function generatePreviewApiRoute(): string {
-  return `import { createPreviewApiHandler } from '@directus-cms/preview';
+  return `import { createPreviewApiHandler } from '@mkuesta/preview';
 import { preview } from '@/lib/preview';
 
 const handler = createPreviewApiHandler(preview.config);
@@ -433,7 +433,7 @@ export const GET = handler;
 }
 
 export function generateExitPreviewRoute(): string {
-  return `import { createExitPreviewHandler } from '@directus-cms/preview';
+  return `import { createExitPreviewHandler } from '@mkuesta/preview';
 import { preview } from '@/lib/preview';
 
 const handler = createExitPreviewHandler(preview.config);
@@ -443,7 +443,7 @@ export const GET = handler;
 }
 
 export function generateWebhooksConfig(opts: SiteOptions): string {
-  return `import { defaultCollectionMappings } from '@directus-cms/webhooks';
+  return `import { defaultCollectionMappings } from '@mkuesta/webhooks';
 
 const COLLECTION_PREFIX = '${opts.collectionPrefix.replace(/'/g, "\\'")}';
 
@@ -456,7 +456,7 @@ export const webhookConfig = {
 }
 
 export function generateWebhooksApiRoute(): string {
-  return `import { createWebhookHandler } from '@directus-cms/webhooks';
+  return `import { createWebhookHandler } from '@mkuesta/webhooks';
 import { webhookConfig } from '@/lib/webhooks';
 
 const handler = createWebhookHandler(webhookConfig);
@@ -466,7 +466,7 @@ export const POST = handler;
 }
 
 export function generateStripeConfig(opts: SiteOptions): string {
-  return `import { createStripeClient } from '@directus-cms/stripe';
+  return `import { createStripeClient } from '@mkuesta/stripe';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const stripe = createStripeClient({
@@ -505,7 +505,7 @@ export const POST = handler;
 }
 
 export function generateAuthConfig(opts: SiteOptions): string {
-  return `import { createAuthClient } from '@directus-cms/auth';
+  return `import { createAuthClient } from '@mkuesta/auth';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const auth = createAuthClient({
@@ -531,7 +531,7 @@ export const GET = handler;
 }
 
 export function generateEmailConfig(opts: SiteOptions): string {
-  return `import { createEmailClient } from '@directus-cms/email';
+  return `import { createEmailClient } from '@mkuesta/email';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const email = createEmailClient({
@@ -559,7 +559,7 @@ export const POST = handler;
 
 export function generateNewsletterConfig(opts: SiteOptions): string {
   const imports = [
-    "import { createNewsletterClient } from '@directus-cms/newsletter';",
+    "import { createNewsletterClient } from '@mkuesta/newsletter';",
     "import { directus, COLLECTION_PREFIX } from './cms';",
   ];
   const configLines: string[] = [
@@ -598,7 +598,7 @@ export const GET = handler;
 export function generateNotificationsConfig(opts: SiteOptions): string {
   return `// Notifications: use <NotificationProvider> in layout and useNotification() hook in components.
 // The client below is optional — only needed if you want CMS-managed notification templates.
-import { createNotificationClient } from '@directus-cms/notifications';
+import { createNotificationClient } from '@mkuesta/notifications';
 import { directus, COLLECTION_PREFIX } from './cms';
 
 export const notifications = createNotificationClient({
@@ -615,7 +615,7 @@ export const notifications = createNotificationClient({
 export function generateLayout(opts: SiteOptions): string {
   if (opts.includeNotifications) {
     return `import type { Metadata } from 'next';
-import { NotificationProvider } from '@directus-cms/notifications/components';
+import { NotificationProvider } from '@mkuesta/notifications/components';
 
 export const metadata: Metadata = {
   title: '${opts.siteName}',

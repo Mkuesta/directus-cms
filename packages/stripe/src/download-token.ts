@@ -11,7 +11,7 @@ export async function generateDownloadToken(
 ): Promise<string> {
   const downloadConfig = config.features?.downloads;
   if (!downloadConfig) {
-    throw new Error('@directus-cms/stripe: features.downloads must be configured to generate download tokens');
+    throw new Error('@mkuesta/stripe: features.downloads must be configured to generate download tokens');
   }
 
   const { SignJWT } = await import('jose');
@@ -63,7 +63,7 @@ export async function verifyDownloadToken(
  */
 export function buildDownloadUrl(config: StripeConfig, token: string): string {
   const baseUrl = config.features?.downloads?.downloadBaseUrl;
-  if (!baseUrl) throw new Error('@directus-cms/stripe: features.downloads.downloadBaseUrl is required');
+  if (!baseUrl) throw new Error('@mkuesta/stripe: features.downloads.downloadBaseUrl is required');
 
   return `${baseUrl}?token=${encodeURIComponent(token)}`;
 }

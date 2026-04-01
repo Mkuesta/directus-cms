@@ -1,5 +1,5 @@
 {
-  "name": "@directus-cms/newsletter",
+  "name": "@mkuesta/newsletter",
   "version": "1.0.0",
   "description": "Email subscription management and newsletter sign-ups for Directus CMS Next.js sites",
   "type": "module",
@@ -21,11 +21,11 @@
   },
   "peerDependencies": {
     "@directus/sdk": ">=17.0.0",
-    "@directus-cms/email": "*",
+    "@mkuesta/email": "*",
     "react": ">=18.0.0"
   },
   "peerDependenciesMeta": {
-    "@directus-cms/email": {
+    "@mkuesta/email": {
       "optional": true
     }
   },
@@ -37,10 +37,16 @@
     "typescript": "^5.5.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkuesta/directus-cms.git",
+    "directory": "packages/newsletter"
+  }
 }

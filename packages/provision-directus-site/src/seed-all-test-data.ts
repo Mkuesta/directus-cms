@@ -194,9 +194,9 @@ async function main() {
 <table>
 <thead><tr><th>Package</th><th>Purpose</th><th>Key Function</th></tr></thead>
 <tbody>
-<tr><td>@directus-cms/core</td><td>Blog &amp; content</td><td>createCmsClient()</td></tr>
-<tr><td>@directus-cms/products</td><td>Product catalog</td><td>createProductClient()</td></tr>
-<tr><td>@directus-cms/admin</td><td>Admin panel</td><td>createAdminApiHandler()</td></tr>
+<tr><td>@mkuesta/core</td><td>Blog &amp; content</td><td>createCmsClient()</td></tr>
+<tr><td>@mkuesta/products</td><td>Product catalog</td><td>createProductClient()</td></tr>
+<tr><td>@mkuesta/admin</td><td>Admin panel</td><td>createAdminApiHandler()</td></tr>
 </tbody>
 </table>
 
@@ -206,9 +206,9 @@ async function main() {
             {
               headers: ['Package', 'Purpose', 'Key Function'],
               rows: [
-                ['@directus-cms/core', 'Blog & content', 'createCmsClient()'],
-                ['@directus-cms/products', 'Product catalog', 'createProductClient()'],
-                ['@directus-cms/admin', 'Admin panel', 'createAdminApiHandler()'],
+                ['@mkuesta/core', 'Blog & content', 'createCmsClient()'],
+                ['@mkuesta/products', 'Product catalog', 'createProductClient()'],
+                ['@mkuesta/admin', 'Admin panel', 'createAdminApiHandler()'],
               ],
             },
           ]),
